@@ -52,28 +52,21 @@ if(v>0) { restart(P); P=50; }
   <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">
     <br>
     <div align=center><hr><b>Управление марсоходом</b></div>
-    <table border=0>
-    <tr>
-    <td>
     <table border=0 align=center>
     <tr>
-    <td><input type="button" value=" ON " onClick="engine=1;"></td>
     <td></td>
-    <td><input type="button" value=" OFF" onClick="engine=0;"></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td><input type="button" value=" up  " onClick="flag=0;"></td>
+    <td align="center"><input type="button" value=" up  " onClick="flag=0;"></td>
     <td></td>
     </tr>  
     <tr>
     <td><input type="button" value="left " onClick="flag=2;"></td>
-    <td><input type="button" value="foto " onClick="flag=4; P=1000;"></td>
+    <td><input type="button" value="foto " onClick="flag=4; P=1000;">
+    <input type="button" value=" OFF" onClick="engine=0;"></td>
     <td><input type="button" value="right" onClick="flag=3;"></td>
     </tr>
     <tr>
     <td></td>
-    <td><input type="button" value=" down" onClick="flag=1;"></td>
+    <td align="center"><input type="button" value=" down" onClick="flag=1;"></td>
     <td></td>
     </tr>
     </table>
