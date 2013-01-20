@@ -24,8 +24,8 @@ if(tick==0){ P=1000;
   rover_x=frame_x/2;
   rover_y=frame_y/2;
   
-  rover_w=20;
-  rover_h=30;
+  rover_w=25;
+  rover_h=27;
   engine=0; //двигатель
   flag=0; //флаг стороны движения
   photo_flag=0;//флаг для фото
