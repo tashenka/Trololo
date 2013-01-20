@@ -4,6 +4,8 @@ if(tick==0){ P=1000;
   mars_center_x = 235;
   mars_center_y = 150;
   mars_radius = 135;
+  rover_w=20;
+  rover_h=30;
   OpenCanvas('S',frame_x,frame_y);
   S.clear();
   F="http://marley.spb.ru/mult/files/";
