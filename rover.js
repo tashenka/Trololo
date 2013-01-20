@@ -1,13 +1,23 @@
 if(tick==0){ P=1000;
-  OpenCanvas('S',510,300);
+  frame_x = 510;
+  frame_y = 300;
+  OpenCanvas('S',frame_x,frame_y);
   S.clear();
   F="http://marley.spb.ru/mult/files/";
-  rover=F+"rover.png";
+  start_picture=F+"Curiosity1.png"
+    rover=F+"rover.png";
   landscape=F+"mars.jpg";
 
-  v=5;
-  rover_x=100;
-  rover_y=60;
+  photo1=F+"mars_1.jpg";
+  photo2=F+"Curiosity.jpg"
+  photo3=F+"Curiosity2.png"
+  photo4=F+"MarsDesert.jpg"
+  photo5=F+"Panorama.png"
+
+
+  v=2;
+  rover_x=frame_x/2;
+  rover_y=frame_y/2;
   rover_w=0;
   rover_h=0;
   engine=0; //двигатель
@@ -15,8 +25,17 @@ if(tick==0){ P=1000;
   //flag1=0;//флаг для фото
   puts("Сделайте красивое фото для базы!")
 }
-else
-{
+if(tick<100){
+  puts("Происходит посадка марсохода");
+  puts("Выполнено: " + tick + "%");
+  if(tick == 0){
+    S.clear();
+  }
+  S.drawImage(start_picture,0,0,510,296);
+  S.paint();
+
+}else{
+  S.clear();
   if(engine==1)
   { 
     switch(flag){
@@ -29,25 +48,30 @@ else
       case 3:{rover=F+'rover.png';
         if(rover_x<470){rover_x=rover_x+v; break;}else{break;}}
       case 4:{ if(rover_y>5){S.clear();P=1000; 
-        foto1=F+'mars_1.jpg';
         S.paint();
-        S.drawImage(foto1,0,0,510,296);
+        S.drawImage(photo1,0,0,510,296);
         puts("У Вас получился обалденный снимок!");}
              else{break;}          
-
       }
     }
   }
   else{
+    puts("Двигатель заглушен, нажмите на стрелки для начала движения");
   }
+
+
+  puts('Тик: ' + tick);
   puts('Скорость: '+v);
   puts('Координаты : '+round(rover_x)+' '+round(rover_y)+'');
   puts("Сделайте красивое фото для базы!");
+
+  S.drawImage(landscape,0,0,510,296);
+  S.drawImage(rover,rover_x,rover_y,rover_w,rover_h);
+  S.paint();
+
 }
-S.paint();
-S.drawImage(landscape,0,0,510,296);
-S.drawImage(rover,rover_x,rover_y,rover_w,rover_h);
 if(v>0) { restart(P); P=50; }
+
 {{html
   <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">
     <br>
@@ -55,18 +79,18 @@ if(v>0) { restart(P); P=50; }
     <table border=0 align=center>
     <tr>
     <td></td>
-    <td align="center"><input type="button" value=" up  " onClick="flag=0;"></td>
+    <td align="center"><input type="button" value="&uarr;" onClick="engine=1;flag=0;"></td>
     <td></td>
     </tr>  
     <tr>
-    <td><input type="button" value="left " onClick="flag=2;"></td>
+    <td><input type="button" value="&larr;" onClick="engine=1;flag=2;"></td>
     <td><input type="button" value="foto " onClick="flag=4; P=1000;">
     <input type="button" value=" OFF" onClick="engine=0;"></td>
-    <td><input type="button" value="right" onClick="flag=3;"></td>
+    <td><input type="button" value="&rarr;" onClick="engine=1;flag=3;"></td>
     </tr>
     <tr>
     <td></td>
-    <td align="center"><input type="button" value=" down" onClick="flag=1;"></td>
+    <td align="center"><input type="button" value=" &darr;" onClick="engine=1;flag=1;"></td>
     <td></td>
     </tr>
     </table>
