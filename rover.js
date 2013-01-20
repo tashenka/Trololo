@@ -55,27 +55,36 @@ if(tick<100){
   S.clear();
   if(engine==1)
   { 
-    switch(flag){//if(((rover_x-255)^2-(rover_y-150)^2)≤280){
+    new_y = y;
+    new_x = x;
+    switch(flag){
       case 0:{rover=F+'rover_u.png';
-        y=y-v;rover_w=30;rover_h=40; break;
+        new_y=y-v;rover_w=30;rover_h=40; break;
       }
       case 1:{rover=F+'rover_d.png';
-        y=y+v;rover_w=30;rover_h=40; break;
+        new_y=y+v;rover_w=30;rover_h=40; break;
       }
       case 2:{rover=F+'rover_r.png';
-        x=x-v;rover_w=40;rover_h=30; break;
+        new_x=x-v;rover_w=40;rover_h=30; break;
       }
       case 3:{rover=F+'rover.png';
-        x=x+v;rover_w=40;rover_h=30; break;
+        new_x=x+v;rover_w=40;rover_h=30; break;
       }
+    }
+    ny = 2*sign(new_x)*sqrt(abs(new_x))
+    nx = 2*sign(new_y)*sqrt(abs(new_y))
+
+    if(ny*ny+nx*nx < mars_radius*mars_radius){
+      x = new_x;
+      y = new_y;
     }
   }
   else{
     puts("Двигатель заглушен. Начинайте движение!");
   }
 
-  X=2*sign(x)*sqrt(abs(x))
-  Y=2*sign(y)*sqrt(abs(y))
+  X=2*sign(x)*sqrt(abs(x));
+  Y=2*sign(y)*sqrt(abs(y));
 
   rover_x=mars_center_x+X;
   rover_y=mars_center_y+Y;
