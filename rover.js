@@ -71,8 +71,8 @@ if(tick<100){
         new_x=x+v;rover_w=40;rover_h=30; break;
       }
     }
-    ny = 2*sign(new_x)*sqrt(abs(new_x))
-    nx = 2*sign(new_y)*sqrt(abs(new_y))
+    ny = 4*sign(new_x)*sqrt(abs(new_x))
+    nx = 4*sign(new_y)*sqrt(abs(new_y))
 
     if(ny*ny+nx*nx < mars_radius*mars_radius){
       x = new_x;
@@ -83,13 +83,13 @@ if(tick<100){
     puts("Двигатель заглушен. Начинайте движение!");
   }
 
-  X=2*sign(x)*sqrt(abs(x));
-  Y=2*sign(y)*sqrt(abs(y));
+  X=4*sign(x)*sqrt(abs(x))
+  Y=4*sign(y)*sqrt(abs(y))
 
   rover_x=mars_center_x+X;
   rover_y=mars_center_y+Y;
 
-  rover_scale = 100/(sqrt(x*x+y*y)/250);
+  rover_scale = 100/(sqrt(x*x+y*y)/350);
   if(rover_scale>100){rover_scale=100;}
 
   puts('Тик: ' + tick);
