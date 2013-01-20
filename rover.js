@@ -11,7 +11,7 @@ if(tick==0){ P=1000;
   rover=F+"rover.png";
   landscape=F+"mars.PNG";
 
-  debug = 1;
+  debug = 0;
 
   photo1=F+"mars_1.jpg";
   photo2=F+"Curiosity.jpg";
@@ -23,7 +23,10 @@ if(tick==0){ P=1000;
   v=2;
   x=0;
   y=0;
+  X=0;
+  Y=0;
   
+  rover_scale=100;
   rover_w=0;
   rover_h=0;
   engine=0; //двигатель
@@ -53,16 +56,16 @@ if(tick<100){
   { 
     switch(flag){//if(((rover_x-255)^2-(rover_y-150)^2)≤280){
       case 0:{rover=F+'rover_u.png';
-        y=y-v; break;
+        y=y-v;rover_w=30;rover_h=40; break;
       }
       case 1:{rover=F+'rover_d.png';
-        y=y+v; break;
+        y=y+v;rover_w=30;rover_h=40; break;
       }
       case 2:{rover=F+'rover_r.png';
-        x=x-v; break;
+        x=x-v;rover_w=40;rover_h=30; break;
       }
       case 3:{rover=F+'rover.png';
-        x=x+v; break;
+        x=x+v;rover_w=40;rover_h=30; break;
       }
     }
   }
@@ -70,19 +73,25 @@ if(tick<100){
     puts("Двигатель заглушен. Начинайте движение!");
   }
 
-  rover_x=mars_center_x+x;
-  rover_y=mars_center_y+y;
+  X=2*sign(x)*sqrt(abs(x))
+  Y=2*sign(y)*sqrt(abs(y))
+
+  rover_x=mars_center_x+X;
+  rover_y=mars_center_y+Y;
+
+  rover_scale = 100/(sqrt(x*x+y*y)/250);
+  if(rover_scale>100){rover_scale=100;}
 
   puts('Тик: ' + tick);
   puts('Скорость: '+v);
-  puts('Координаты : '+round(rover_x)+' '+round(rover_y)+' ' + 'декарт: '+round(x)+' '+round(y));
+  puts('Координаты : '+round(rover_x)+' '+round(rover_y)+' ' + 'декарт: '+round(X)+' '+round(Y));
   puts("Сделайте красивое фото для базы!");
 
   S.drawImage(landscape,0,0,510,296);
   if(debug==1){
     S.drawImage("http://marley.spb.ru/images/dotg.gif", mars_center_x,mars_center_y, 5, 5);
   }
-  S.drawImage(rover,rover_x,rover_y,rover_w,rover_h);
+  S.drawImage(rover,rover_x,rover_y,rover_w*(rover_scale/100),rover_h*(rover_scale/100));
   S.paint();
 
 }
