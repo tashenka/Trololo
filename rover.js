@@ -53,7 +53,6 @@ if(tick<100){
         if(rover_x>120){rover_x=rover_x-v; break;}else{break;}}
       case 3:{rover=F+'rover.png';
         if(rover_x<310){rover_x=rover_x+v; break;}else{break;}}
-             //} else{puts('rover выехал');}
     }
   }
   else{
