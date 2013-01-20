@@ -5,14 +5,15 @@ if(tick==0){ P=1000;
   S.clear();
   F="http://marley.spb.ru/mult/files/";
   start_picture=F+"Curiosity1.png"
-    rover=F+"rover.png";
+  rover=F+"rover.png";
   landscape=F+"mars.jpg";
 
   photo1=F+"mars_1.jpg";
-  photo2=F+"Curiosity.jpg"
-  photo3=F+"Curiosity2.png"
-  photo4=F+"MarsDesert.jpg"
-  photo5=F+"Panorama.png"
+  photo2=F+"Curiosity.jpg";
+  photo3=F+"Curiosity2.png";
+  photo4=F+"MarsDesert.jpg";
+  photo5=F+"Panorama.png";
+  photos = [photo1,photo2,photo3,photo4,photo5];
 
 
   v=2;
@@ -22,7 +23,7 @@ if(tick==0){ P=1000;
   rover_h=0;
   engine=0; //двигатель
   flag=0; //флаг стороны движения
-  //flag1=0;//флаг для фото
+  photo_flag=0;//флаг для фото
   puts("Сделайте красивое фото для базы!")
 }
 if(tick<100){
@@ -33,7 +34,13 @@ if(tick<100){
   }
   S.drawImage(start_picture,0,0,510,296);
   S.paint();
-
+}else if(photo_flag==1){
+  engine=0;
+  S.clear();
+  P=1000;
+  S.drawImage(photos[flag],0,0,510,296);
+  S.paint();
+  puts("У Вас получился обалденный снимок!");
 }else{
   S.clear();
   if(engine==1)
@@ -47,12 +54,7 @@ if(tick<100){
         if(rover_x>5){rover_x=rover_x-v; break;}else{break;}}
       case 3:{rover=F+'rover.png';
         if(rover_x<470){rover_x=rover_x+v; break;}else{break;}}
-      case 4:{ if(rover_y>5){S.clear();P=1000; 
-        S.paint();
-        S.drawImage(photo1,0,0,510,296);
-        puts("У Вас получился обалденный снимок!");}
-             else{break;}          
-      }
+
     }
   }
   else{
@@ -70,7 +72,8 @@ if(tick<100){
   S.paint();
 
 }
-if(v>0) { restart(P); P=50; }
+restart(P); P=50;
+
 
 {{html
   <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">
@@ -79,18 +82,18 @@ if(v>0) { restart(P); P=50; }
     <table border=0 align=center>
     <tr>
     <td></td>
-    <td align="center"><input type="button" value="&uarr;" onClick="engine=1;flag=0;"></td>
+    <td align="center"><input type="button" value="&uarr;" onClick="engine=1;flag=0;photo_flag=0;"></td>
     <td></td>
     </tr>  
     <tr>
-    <td><input type="button" value="&larr;" onClick="engine=1;flag=2;"></td>
-    <td><input type="button" value="foto " onClick="flag=4; P=1000;">
-    <input type="button" value=" OFF" onClick="engine=0;"></td>
-    <td><input type="button" value="&rarr;" onClick="engine=1;flag=3;"></td>
+    <td><input type="button" value="&larr;" onClick="engine=1;flag=2;photo_flag=0;"></td>
+    <td><input type="button" value="foto " onClick="photo_flag=1;">
+    <input type="button" value=" OFF" onClick="engine=0;photo_flag=0;"></td>
+    <td><input type="button" value="&rarr;" onClick="engine=1;flag=3;photo_flag=0;"></td>
     </tr>
     <tr>
     <td></td>
-    <td align="center"><input type="button" value=" &darr;" onClick="engine=1;flag=1;"></td>
+    <td align="center"><input type="button" value=" &darr;" onClick="engine=1;flag=1;photo_flag=0;"></td>
     <td></td>
     </tr>
     </table>
