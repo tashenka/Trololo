@@ -28,7 +28,7 @@ else
         if(rover_x>5){rover_x=rover_x-v; break;}else{break;}}
       case 3:{rover=F+'rover.png';
         if(rover_x<470){rover_x=rover_x+v; break;}else{break;}}
-      case 4:{ if(rover_y>5){
+      case 4:{ if(rover_y>5){S.clear();P=1000; 
         foto1=F+'mars_1.jpg';
         S.paint();
         S.drawImage(foto1,0,0,510,296);
