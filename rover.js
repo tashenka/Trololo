@@ -29,6 +29,7 @@ if(tick==0){ P=1000;
   rover_scale=100;
   rover_w=0;
   rover_h=0;
+
   engine=0; //двигатель
   flag=0; //флаг стороны движения
   photo_flag=0;//флаг для фото
@@ -98,7 +99,7 @@ if(tick<100){
 restart(P); P=50;
 
 {{html
-  /* <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">*/
+  <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">
   <br>
     <div align=center><hr><b>Управление марсоходом</b></div>
     <table border=0 align=center>
