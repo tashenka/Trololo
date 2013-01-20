@@ -4,9 +4,9 @@ if(tick==0){ P=1000;
   OpenCanvas('S',frame_x,frame_y);
   S.clear();
   F="http://marley.spb.ru/mult/files/";
-  start_picture=F+"Curiosity1.png"
+  start_picture=F+"Curiosity1.png";
   rover=F+"rover.png";
-  landscape=F+"mars.jpg";
+  landscape=F+"mars.PNG";
 
   photo1=F+"mars_1.jpg";
   photo2=F+"Curiosity.jpg";
@@ -14,7 +14,6 @@ if(tick==0){ P=1000;
   photo4=F+"MarsDesert.jpg";
   photo5=F+"Panorama.png";
   photos = [photo1,photo2,photo3,photo4,photo5];
-
 
   v=2;
   rover_x=frame_x/2;
@@ -27,13 +26,13 @@ if(tick==0){ P=1000;
   puts("Сделайте красивое фото для базы!")
 }
 if(tick<100){
-  puts("Происходит посадка марсохода");
+  puts("Происходит посадка марсохода.");
   puts("Выполнено: " + tick + "%");
   if(tick == 0){
-    S.clear();
+    S.clear();  
+    S.drawImage(start_picture,0,0,510,296);
+    S.paint();
   }
-  S.drawImage(start_picture,0,0,510,296);
-  S.paint();
 }else if(photo_flag==1){
   engine=0;
   S.clear();
@@ -45,20 +44,20 @@ if(tick<100){
   S.clear();
   if(engine==1)
   { 
-    switch(flag){
+    switch(flag){//if(((rover_x-255)^2-(rover_y-150)^2)≤280){
       case 0:{rover=F+'rover_u.png';
-        if(rover_y>5){rover_y=rover_y-v; break;}else{break;}}
+        if(rover_y>25){rover_y=rover_y-v; break;}else{break;}}
       case 1:{rover=F+'rover_d.png';
-        if(rover_y<265){rover_y=rover_y+v; break;}else{break;}}
+        if(rover_y<240){rover_y=rover_y+v; break;}else{break;}}
       case 2:{rover=F+'rover_r.png';
-        if(rover_x>5){rover_x=rover_x-v; break;}else{break;}}
+        if(rover_x>120){rover_x=rover_x-v; break;}else{break;}}
       case 3:{rover=F+'rover.png';
-        if(rover_x<470){rover_x=rover_x+v; break;}else{break;}}
-
+        if(rover_x<310){rover_x=rover_x+v; break;}else{break;}}
+             //} else{puts('rover выехал');}
     }
   }
   else{
-    puts("Двигатель заглушен, нажмите на стрелки для начала движения");
+    puts("Двигатель заглушен. Начинайте движение!");
   }
 
 
@@ -74,10 +73,9 @@ if(tick<100){
 }
 restart(P); P=50;
 
-
 {{html
- /* <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">*/
-    <br>
+  /* <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">*/
+  <br>
     <div align=center><hr><b>Управление марсоходом</b></div>
     <table border=0 align=center>
     <tr>
