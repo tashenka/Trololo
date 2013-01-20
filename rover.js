@@ -1,12 +1,17 @@
 if(tick==0){ P=1000;
   frame_x = 510;
   frame_y = 300;
+  mars_center_x = 235;
+  mars_center_y = 150;
+  mars_radius = 135;
   OpenCanvas('S',frame_x,frame_y);
   S.clear();
   F="http://marley.spb.ru/mult/files/";
   start_picture=F+"Curiosity1.png";
   rover=F+"rover.png";
   landscape=F+"mars.PNG";
+
+  debug = 1;
 
   photo1=F+"mars_1.jpg";
   photo2=F+"Curiosity.jpg";
@@ -44,16 +49,27 @@ if(tick<100){
   S.clear();
   if(engine==1)
   { 
+    new_x = rover_x;
+    new_y = rover_y;
     switch(flag){//if(((rover_x-255)^2-(rover_y-150)^2)≤280){
       case 0:{rover=F+'rover_u.png';
-        if(rover_y>25){rover_y=rover_y-v; break;}else{break;}}
+        new_y=rover_y-v; break;
+      }
       case 1:{rover=F+'rover_d.png';
-        if(rover_y<240){rover_y=rover_y+v; break;}else{break;}}
+        new_y=rover_y+v; break;
+      }
       case 2:{rover=F+'rover_r.png';
-        if(rover_x>120){rover_x=rover_x-v; break;}else{break;}}
+        new_x=rover_x-v; break;
+      }
       case 3:{rover=F+'rover.png';
-        if(rover_x<310){rover_x=rover_x+v; break;}else{break;}}
+        new_x=rover_x+v; break;
+      }
     }
+    if((new_x-mars_center_x)*(new_x-mars_center_x)+(new_y-mars_center_y)*(new_y-mars_center_y)<= mars_radius*mars_radius){
+      rover_y = new_y;
+      rover_x = new_x;
+    }
+
   }
   else{
     puts("Двигатель заглушен. Начинайте движение!");
@@ -66,6 +82,9 @@ if(tick<100){
   puts("Сделайте красивое фото для базы!");
 
   S.drawImage(landscape,0,0,510,296);
+  if(debug==1){
+    S.drawImage("http://marley.spb.ru/images/dotg.gif", mars_center_x,mars_center_y, 5, 5);
+  }
   S.drawImage(rover,rover_x,rover_y,rover_w,rover_h);
   S.paint();
 
