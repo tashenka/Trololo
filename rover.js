@@ -74,13 +74,13 @@ if(tick<100){
     puts("Двигатель заглушен. Начинайте движение!");
   }
 
-  X=2*sign(x)*sqrt(abs(x))
-  Y=2*sign(y)*sqrt(abs(y))
+  X=4*sign(x)*sqrt(abs(x))
+  Y=4*sign(y)*sqrt(abs(y))
 
   rover_x=mars_center_x+X;
   rover_y=mars_center_y+Y;
 
-  rover_scale = 100/(sqrt(x*x+y*y)/250);
+  rover_scale = 100/(sqrt(x*x+y*y)/350);
   if(rover_scale>100){rover_scale=100;}
 
   puts('Тик: ' + tick);
