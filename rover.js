@@ -6,7 +6,7 @@ if(tick==0){ P=1000;
   F="http://marley.spb.ru/mult/files/";
   start_picture=F+"Curiosity1.png"
   rover=F+"rover.png";
-  landscape=F+"mars.jpg";
+  landscape=F+"mars.PNG";
 
   photo1=F+"mars_1.jpg";
   photo2=F+"Curiosity.jpg";
@@ -45,15 +45,15 @@ if(tick<100){
   S.clear();
   if(engine==1)
   { 
-    switch(flag){
+    switch(flag){//if(((rover_x-255)^2-(rover_y-150)^2)≤280){
       case 0:{rover=F+'rover_u.png';
-        if(rover_y>5){rover_y=rover_y-v; break;}else{break;}}
+        if(rover_y>25){rover_y=rover_y-v; break;}else{break;}}
       case 1:{rover=F+'rover_d.png';
-        if(rover_y<265){rover_y=rover_y+v; break;}else{break;}}
+        if(rover_y<240){rover_y=rover_y+v; break;}else{break;}}
       case 2:{rover=F+'rover_r.png';
-        if(rover_x>5){rover_x=rover_x-v; break;}else{break;}}
+        if(rover_x>120){rover_x=rover_x-v; break;}else{break;}}
       case 3:{rover=F+'rover.png';
-        if(rover_x<470){rover_x=rover_x+v; break;}else{break;}}
+        if(rover_x<310){rover_x=rover_x+v; break;}else{break;}}
 
     }
   }
