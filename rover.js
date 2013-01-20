@@ -23,6 +23,7 @@ if(tick==0){ P=1000;
   v=2;
   rover_x=frame_x/2;
   rover_y=frame_y/2;
+  
   rover_w=0;
   rover_h=0;
   engine=0; //двигатель
@@ -30,6 +31,9 @@ if(tick==0){ P=1000;
   photo_flag=0;//флаг для фото
   puts("Сделайте красивое фото для базы!")
 }
+x = rover_x-mars_center_x
+y = rover_y-mars_center_y
+
 if(tick<100){
   puts("Происходит посадка марсохода.");
   puts("Выполнено: " + tick + "%");
@@ -79,6 +83,7 @@ if(tick<100){
   puts('Тик: ' + tick);
   puts('Скорость: '+v);
   puts('Координаты : '+round(rover_x)+' '+round(rover_y)+'');
+  puts('Координаты(декарт): '+round(x)+' '+round(y)+'');
   puts("Сделайте красивое фото для базы!");
 
   S.drawImage(landscape,0,0,510,296);
