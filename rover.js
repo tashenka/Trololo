@@ -21,8 +21,8 @@ if(tick==0){ P=1000;
   photos = [photo1,photo2,photo3,photo4,photo5];
 
   v=2;
-  rover_x=frame_x/2;
-  rover_y=frame_y/2;
+  x=0;
+  y=0;
   
   rover_w=0;
   rover_h=0;
@@ -31,8 +31,6 @@ if(tick==0){ P=1000;
   photo_flag=0;//флаг для фото
   puts("Сделайте красивое фото для базы!")
 }
-x = rover_x-mars_center_x
-y = rover_y-mars_center_y
 
 if(tick<100){
   puts("Происходит посадка марсохода.");
@@ -53,37 +51,31 @@ if(tick<100){
   S.clear();
   if(engine==1)
   { 
-    new_x = rover_x;
-    new_y = rover_y;
     switch(flag){//if(((rover_x-255)^2-(rover_y-150)^2)≤280){
       case 0:{rover=F+'rover_u.png';
-        new_y=rover_y-v; break;
+        y=y-v; break;
       }
       case 1:{rover=F+'rover_d.png';
-        new_y=rover_y+v; break;
+        y=y+v; break;
       }
       case 2:{rover=F+'rover_r.png';
-        new_x=rover_x-v; break;
+        x=x-v; break;
       }
       case 3:{rover=F+'rover.png';
-        new_x=rover_x+v; break;
+        x=x+v; break;
       }
     }
-    if((new_x-mars_center_x)*(new_x-mars_center_x)+(new_y-mars_center_y)*(new_y-mars_center_y)<= mars_radius*mars_radius){
-      rover_y = new_y;
-      rover_x = new_x;
-    }
-
   }
   else{
     puts("Двигатель заглушен. Начинайте движение!");
   }
 
+  rover_x=mars_center_x+x;
+  rover_y=mars_center_y+y;
 
   puts('Тик: ' + tick);
   puts('Скорость: '+v);
-  puts('Координаты : '+round(rover_x)+' '+round(rover_y)+'');
-  puts('Координаты(декарт): '+round(x)+' '+round(y)+'');
+  puts('Координаты : '+round(rover_x)+' '+round(rover_y)+' ' + 'декарт: '+round(x)+' '+round(y));
   puts("Сделайте красивое фото для базы!");
 
   S.drawImage(landscape,0,0,510,296);
