@@ -76,7 +76,7 @@ restart(P); P=50;
 
 
 {{html
-  <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">
+ /* <embed SRC="http://marley.spb.ru/music/doors.mid" type="audio/x-midi"  autostart="true" height="10" loop="1">*/
     <br>
     <div align=center><hr><b>Управление марсоходом</b></div>
     <table border=0 align=center>
