@@ -99,7 +99,7 @@ if(tick<100){
   puts('Скорость: '+v);
   puts('Координаты : '+round(rover_x)+' '+round(rover_y)+' ' + 'декарт: '+round(X)+' '+round(Y));
   puts("Сделайте красивое фото для базы!");
-  P=500;
+
   S.drawImage(landscape,0,0,510,296);
   if(debug==1){
     S.drawImage("http://marley.spb.ru/images/dotg.gif", mars_center_x,mars_center_y, 5, 5);
