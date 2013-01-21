@@ -27,8 +27,8 @@ if(tick==0){ P=1000;
   Y=0;
   
   rover_scale=100;
-  rover_w=0;
-  rover_h=0;
+  rover_w=40;
+  rover_h=30;
 
   engine=0; //двигатель
   flag=0; //флаг стороны движения
@@ -83,14 +83,17 @@ if(tick<100){
     puts("Двигатель заглушен. Начинайте движение!");
   }
 
-  X=4*sign(x)*sqrt(abs(x))
-  Y=4*sign(y)*sqrt(abs(y))
-
-  rover_x=mars_center_x+X;
-  rover_y=mars_center_y+Y;
+  X=4*sign(x)*sqrt(abs(x));
+  Y=4*sign(y)*sqrt(abs(y));
 
   rover_scale = 100/(sqrt(x*x+y*y)/350);
   if(rover_scale>100){rover_scale=100;}
+
+  rover_scaled_w = rover_w*(rover_scale/100);
+  rover_scaled_h = rover_h*(rover_scale/100);
+
+  rover_x=mars_center_x+X-rover_scaled_w/2;
+  rover_y=mars_center_y+Y-rover_scaled_h/2;
 
   puts('Тик: ' + tick);
   puts('Скорость: '+v);
@@ -101,7 +104,7 @@ if(tick<100){
   if(debug==1){
     S.drawImage("http://marley.spb.ru/images/dotg.gif", mars_center_x,mars_center_y, 5, 5);
   }
-  S.drawImage(rover,rover_x,rover_y,rover_w*(rover_scale/100),rover_h*(rover_scale/100));
+  S.drawImage(rover,rover_x,rover_y,rover_scaled_w,rover_scaled_h);
   S.paint();
 
 }
