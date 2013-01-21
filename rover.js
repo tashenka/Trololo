@@ -96,7 +96,7 @@ if(tick<100){
   puts('Скорость: '+v);
   puts('Координаты : '+round(rover_x)+' '+round(rover_y)+' ' + 'декарт: '+round(X)+' '+round(Y));
   puts("Сделайте красивое фото для базы!");
-
+  P=500;
   S.drawImage(landscape,0,0,510,296);
   if(debug==1){
     S.drawImage("http://marley.spb.ru/images/dotg.gif", mars_center_x,mars_center_y, 5, 5);
@@ -128,7 +128,6 @@ restart(P); P=50;
     <td align="center"><input type="button" value=" &darr;" onClick="engine=1;flag=1;photo_flag=0;"></td>
     <td></td>
     </tr>
-    </table>
     </td>
     </tr>
     </table>
